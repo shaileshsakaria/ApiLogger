@@ -1,0 +1,71 @@
+
+
+1.Add key in WebConfig
+	- <add key="LoggerConnectionString" value="MongoDB or SQLDBConnection" />
+		- That pickup the connection string e.g. MongoDB/UtilityProject
+    - <add key="LoggerApplicationName" value="TGSMVCLogger" />
+		- That stored the application name in log table
+    - <add key="MongoDBName" value="TGSMVCLogger" />
+		- That MongoDB datatabase name
+		
+2.Add connection string name as specified the value in App settings key "LoggerConnectionString" in WebConfig
+	- For SQLServer
+		- <add name="SQLDBConnection" connectionString="data source=192.168.0.2\sql2014exp;initial catalog=Demo;Integrated Security=False;User Id=sa; Password=triveni@123;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False;MultipleActiveResultSets=true;" providerName="System.Data.SqlClient" />
+	
+	- For MongoDB
+		- <add name="MongoDB" connectionString="mongodb://localhost:27017" />
+
+
+3.Add NuGet packages with version
+	- Newtonsoft.Json 	- Version: 11.0.0.0
+	- MongoDB.Driver	- Version: 2.5.0
+
+4.Add code in Global.asax.cs file in Application_Start() method
+	- GlobalConfiguration.Configuration.MessageHandlers.Add(new LogHandler([Options]));
+	- [Options]
+		- Enums.LoggerStorage.TextFile.ToString()
+		- Enums.LoggerStorage.SqlServerDB.ToString()
+		- Enums.LoggerStorage.MongoDB.ToString()
+	- e.g. GlobalConfiguration.Configuration.MessageHandlers.Add(new LogHandler(Enums.LoggerStorage.MongoDB.ToString()));
+
+5.If you choose TextFile
+	- you find that log file in api project root directory in "Log" folder
+
+6.If you choose SqlServerDB for Stored Log Detail
+	- Create table in your database - below script
+	GO
+	/****** Object:  Table [dbo].[ApiLogger]    Script Date: 2/24/2018 12:09:04 PM ******/
+	SET ANSI_NULLS ON
+	GO
+	SET QUOTED_IDENTIFIER ON
+	GO
+	SET ANSI_PADDING ON
+	GO
+	CREATE TABLE [dbo].[ApiLogger](
+		[LoggerId] [bigint] IDENTITY(1,1) NOT NULL,
+		[Application] [nvarchar](200) NULL,
+		[ApplicaionUser] [nvarchar](200) NULL,
+		[Machine] [nvarchar](200) NULL,
+		[RequestTimestamp] [datetime] NULL,
+		[RequestIpAddress] [nvarchar](200) NULL,
+		[RequestContentType] [varchar](max) NULL,
+		[RequestContentBody] [varchar](max) NULL,
+		[RequestUri] [nvarchar](500) NULL,
+		[RequestMethod] [nvarchar](100) NULL,
+		[RequestHeaders] [varchar](max) NULL,
+		[ResponseTimestamp] [datetime] NULL,
+		[ResponseContentType] [varchar](max) NULL,
+		[ResponseContentBody] [varchar](max) NULL,
+		[ResponseStatusCode] [int] NULL,
+		[ResponseHeaders] [varchar](max) NULL,
+	 CONSTRAINT [PK_ApiLogger] PRIMARY KEY CLUSTERED 
+	(
+		[LoggerId] ASC
+	)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+	) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+	GO
+	SET ANSI_PADDING OFF
+	GO
+
+	

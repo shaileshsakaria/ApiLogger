@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TGSLogHandler", "TGSLogHandler\TGSLogHandler.csproj", "{6B4AB575-DB08-4D9D-9894-7EB60B47F09E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggerWebAPI", "LoggerWebAPI\LoggerWebAPI.csproj", "{76F5790F-8598-476C-B938-5C48D5B5FA7A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6B4AB575-DB08-4D9D-9894-7EB60B47F09E} = {6B4AB575-DB08-4D9D-9894-7EB60B47F09E}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest.LoggerWebAPI", "UnitTest.LoggerWebAPI\UnitTest.LoggerWebAPI.csproj", "{7C551CEE-984E-4262-B899-C96CC49829DD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6B4AB575-DB08-4D9D-9894-7EB60B47F09E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B4AB575-DB08-4D9D-9894-7EB60B47F09E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B4AB575-DB08-4D9D-9894-7EB60B47F09E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B4AB575-DB08-4D9D-9894-7EB60B47F09E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76F5790F-8598-476C-B938-5C48D5B5FA7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76F5790F-8598-476C-B938-5C48D5B5FA7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76F5790F-8598-476C-B938-5C48D5B5FA7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76F5790F-8598-476C-B938-5C48D5B5FA7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C551CEE-984E-4262-B899-C96CC49829DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C551CEE-984E-4262-B899-C96CC49829DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C551CEE-984E-4262-B899-C96CC49829DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C551CEE-984E-4262-B899-C96CC49829DD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {27156FB3-95A6-4054-A06C-95BF77CF3856}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 4
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tgsutility.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = LoggerWebAPI\\LoggerWebAPI.csproj
+		SccProjectName1 = LoggerWebAPI
+		SccLocalPath1 = LoggerWebAPI
+		SccProjectUniqueName2 = TGSLogHandler\\TGSLogHandler.csproj
+		SccProjectName2 = TGSLogHandler
+		SccLocalPath2 = TGSLogHandler
+		SccProjectUniqueName3 = UnitTest.LoggerWebAPI\\UnitTest.LoggerWebAPI.csproj
+		SccProjectName3 = UnitTest.LoggerWebAPI
+		SccLocalPath3 = UnitTest.LoggerWebAPI
+	EndGlobalSection
+EndGlobal
